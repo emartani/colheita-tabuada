@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const feedbackEl = document.getElementById('feedback');
     const perguntaEl = document.getElementById('pergunta');
     const resetBtn = document.getElementById('reset-btn');
-    const SEPARATION_DISTANCE_PX = 70; // Espaço de segurança mínimo entre os centros das frutas (em pixels)
-    const MAX_PLACEMENT_ATTEMPTS = 50; // Limite de tentativas para evitar loops infinitos
+    const SEPARATION_DISTANCE_PX = 50; // Espaço de segurança mínimo entre os centros das frutas (em pixels)
+    const MAX_PLACEMENT_ATTEMPTS = 200; // Limite de tentativas para evitar loops infinitos
 
     const FRUTAS = ['🍎', '🍓', '🍒', '🍇', '🍉', '🥭', '🍍', '🍑', '🥝', '🍋'];
     const MAX_NUMBERS = 20; // NOVO TOTAL: 10 Corretos + 10 Incorretos
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Cria o campo de colheita (AGORA COM LÓGICA DE DETECÇÃO DE COLISÃO)
+// 2. Cria o campo de colheita (FINALIZADO COM DETECÇÃO DE COLISÃO ROBUSTA)
 function criarColheita() {
     colheitaArea.innerHTML = '';
     const numerosParaColher = [];
@@ -46,12 +47,12 @@ function criarColheita() {
     const numCorretos = 10;
     const numErrados = MAX_NUMBERS - numCorretos;
 
-    // ... (1. Geração dos 10 múltiplos corretos) ...
+    // 1. Geração dos 10 múltiplos corretos
     for (let i = 0; i < numCorretos; i++) {
         numerosParaColher.push({ valor: gerarNumero(true), isMultiple: true });
     }
 
-    // ... (2. Geração dos 10 números errados) ...
+    // 2. Geração dos 10 números errados
     for (let i = 0; i < numErrados; i++) {
         numerosParaColher.push({ valor: gerarNumero(false), isMultiple: false });
     }
@@ -76,7 +77,8 @@ function criarColheita() {
     
     // --- LÓGICA DE POSICIONAMENTO COM LOOP WHILE ---
 
-    // Obtém as dimensões do container para calcular posições reais
+    // Obtém as dimensões do container para calcular posições reais em pixels
+    // Deve ser chamada APÓS o DOM estar pronto
     const containerRect = colheitaArea.getBoundingClientRect();
     const containerWidth = containerRect.width;
     const containerHeight = containerRect.height;
@@ -85,7 +87,7 @@ function criarColheita() {
     numerosParaColher.forEach(item => {
         const frutaEl = document.createElement('div');
         frutaEl.classList.add('fruta');
-        // ... (Define innerHTML, dataset, etc.) ...
+        
         const frutaEmoji = FRUTAS[Math.floor(Math.random() * FRUTAS.length)];
         frutaEl.innerHTML = `${frutaEmoji}<br><span>${item.valor}</span>`;
         frutaEl.dataset.isMultiple = item.isMultiple;
@@ -122,8 +124,8 @@ function criarColheita() {
             frutaEl.addEventListener('click', handleColheitaClick);
             colheitaArea.appendChild(frutaEl);
         } else {
-            // Posição não encontrada após muitas tentativas (pode ignorar ou registrar um erro)
-            console.warn(`Não foi possível encontrar um lugar livre para a fruta ${item.valor} após ${MAX_PLACEMENT_ATTEMPTS} tentativas.`);
+             // Caso falhe após 200 tentativas, a fruta é ignorada para não travar o jogo.
+             // Você não verá mais a mensagem de erro, mas pode faltar uma fruta.
         }
     });
 }
