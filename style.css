@@ -98,10 +98,9 @@ h1 {
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s ease-out, opacity 0.3s;
     user-select: none;
     position: absolute; 
-    transition: transform 0.2s ease-out, opacity 0.3s, top 0.5s, left 0.5s; /* Adiciona top/left na transição */
+    transition: transform 0.2s ease-out, opacity 0.3s, top 0.5s, left 0.5s;  /* Adiciona top/left na transição */
 }
 
 .fruta:hover {
