@@ -150,13 +150,13 @@ h1 {
 
     /* 2. Reduz o tamanho das frutas/números */
     .fruta {
-        font-size: 20px;
-        padding: 5px;
+        font-size: 15px;
+        padding: 4px;
     }
 
     /* 3. Garante que os números dentro da fruta também diminuam */
     .fruta span {
-        font-size: 14px;
+        font-size: 10px;
     }
     
     /* 4. Reduz o tamanho do fazendeiro */
