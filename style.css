@@ -89,7 +89,7 @@ h1 {
 
 #colheita-area {
     height: 100%;
-    padding-bottom: 50px; /* Espaço para o fazendeiro */
+     /*padding-bottom: 50px; Espaço para o fazendeiro */
     position: relative; /* ESSENCIAL para o posicionamento absoluto das frutas */
 }
 
@@ -139,31 +139,30 @@ h1 {
     color: red;
 }
 
-/* * MEDIA QUERY PARA TELAS PEQUENAS (CELULARES)
- * A regra será aplicada quando a largura da tela for de 600px ou menos.
- */
+/* style.css (Adicione/Substitua no final do arquivo) */
+
 @media (max-width: 600px) {
     
-    /* 1. Reduz o tamanho do campo (fazenda) */
+    /* 1. AUMENTA A ALTURA DO CAMPO PARA COMPENSAR A LARGURA */
     .fazenda {
-        height: 250px; /* Reduz de 300px para 250px */
+        height: 400px; /* Aumentado para 400px (o padrão é 300px) */
         margin: 15px 0;
     }
 
     /* 2. Reduz o tamanho das frutas/números */
     .fruta {
-        font-size: 20px; /* Reduz de 30px para 20px (o emoji) */
-        padding: 5px;   /* Reduz o padding para diminuir a área de toque */
+        font-size: 20px;
+        padding: 5px;
     }
 
     /* 3. Garante que os números dentro da fruta também diminuam */
     .fruta span {
-        font-size: 14px; /* Opcional: Ajusta o tamanho do número */
+        font-size: 14px;
     }
     
     /* 4. Reduz o tamanho do fazendeiro */
     #fazendeiro {
-        font-size: 30px; /* Reduz de 40px para 30px */
+        font-size: 30px;
     }
 
     /* 5. Ajusta o tamanho da fonte geral do cabeçalho */
