@@ -100,7 +100,7 @@ function criarColheita() {
 
         while (overlap && attempt < MAX_PLACEMENT_ATTEMPTS) {
             // Gera novas posições aleatórias (10% a 60% top, 5% a 90% left)
-            topPercent = Math.floor(Math.random() * 50) + 10; 
+            topPercent = Math.floor(Math.random() * 75) + 10; 
             leftPercent = Math.floor(Math.random() * 85) + 5; 
 
             // Converte a posição percentual em pixels absolutos para a verificação
