@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colheita Múltipla</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Jogo da Colheita Múltipla</h1>
+        
+        <div class="instrucoes">
+            <p id="pergunta">Qual tabuada você quer treinar?</p>
+            <div class="config">
+                <label for="multiplo">Múltiplo (Ex: 3, 5, 7):</label>
+                <input type="number" id="multiplo" value="4" min="2" max="10">
+                <button id="iniciar-btn">Iniciar Colheita</button>
+            </div>
+        </div>
+
+        <div class="placar">
+            <p>Pontuação: <span id="pontuacao">0</span></p>
+            <p>Múltiplos Corretos: <span id="corretos-count">0</span> de 10</p>
+        </div>
+
+        <div class="fazenda">
+            <div id="fazendeiro">👨‍🌾</div>
+            <div id="colheita-area">
+                </div>
+        </div>
+
+        <p id="feedback" class="feedback"></p>
+        <button id="reset-btn" style="display: none;">Novo Jogo</button>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
