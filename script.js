@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const FRUTAS = ['🍎', '🍓', '🍒', '🍇', '🍉', '🥭', '🍍', '🍑', '🥝', '🍋'];
     const MAX_NUMBERS = 20; // NOVO TOTAL: 10 Corretos + 10 Incorretos
+
+    const somAcerto = document.getElementById('som-acerto');
+    const somErro = document.getElementById('som-erro');
+
     let multiploAtual = 4;
     let pontuacao = 0;
     let corretosColhidos = 0;
@@ -137,43 +141,36 @@ function criarColheita() {
         const fruta = event.currentTarget;
         const isCorreta = fruta.dataset.isMultiple === 'true';
 
-        // Desabilita o clique para a transição
         fruta.style.pointerEvents = 'none';
 
         if (isCorreta) {
-            // Acertou!
             fruta.classList.add('correta');
             fruta.classList.add('colhida');
             pontuacao += 10;
             corretosColhidos++;
             feedbackEl.textContent = `Acertou! ${fruta.dataset.valor} é múltiplo de ${multiploAtual}. +10 pontos.`;
             feedbackEl.className = 'feedback success';
-            
-            // Remove o listener para não poder clicar de novo
+            somAcerto.play(); // 🔊 som de acerto
             fruta.removeEventListener('click', handleColheitaClick);
-
         } else {
-            // Errou!
             fruta.classList.add('errada');
             pontuacao = Math.max(0, pontuacao - 5);
             feedbackEl.textContent = `Errado! ${fruta.dataset.valor} NÃO é múltiplo de ${multiploAtual}. -5 pontos.`;
             feedbackEl.className = 'feedback error';
-            
-            // Reabilita o clique (deixa a fruta errada na tela, mas permite clicar nela novamente)
+            somErro.play(); // 🔊 som de erro
             setTimeout(() => {
-                 fruta.classList.remove('errada');
-                 fruta.style.pointerEvents = 'auto';
-            }, 500); // 500ms para ver o erro
-        }
-
-        // Atualiza placar
-        atualizarPlacar();
-        
-        // Verifica se o jogo terminou
-        if (corretosColhidos === 10) {
-            finalizarJogo();
-        }
+                fruta.classList.remove('errada');
+                fruta.style.pointerEvents = 'auto';
+            }, 500);
     }
+
+    atualizarPlacar();
+
+    if (corretosColhidos === 10) {
+        finalizarJogo();
+    }
+    }
+
 
     // 4. Inicia o jogo
     function iniciarJogo() {
