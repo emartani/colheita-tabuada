@@ -178,6 +178,60 @@ h1 {
 .feedback.success { color: green; }
 .feedback.error { color: red; }
 
+/* Fundo escuro do pop-up */
+.popup {
+  display: none; /* começa invisível */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Caixa central */
+.popup-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: aparecer 0.5s ease;
+}
+
+.popup-content h2 {
+  color: #4CAF50;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+#popup-close {
+  padding: 8px 15px;
+  font-size: 16px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#popup-close:hover {
+  background: #45a049;
+}
+
+/* Animação */
+@keyframes aparecer {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
 /* Responsivo para celular */
 @media (max-width: 600px) {
   .fazenda {
@@ -195,7 +249,7 @@ h1 {
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 37px;
   }
 
   #iniciar-btn, #reset-btn {

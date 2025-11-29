@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const somAcerto = document.getElementById('som-acerto');
     const somErro = document.getElementById('som-erro');
+    const somComemoracao = document.getElementById('som-comemoracao');
 
     let multiploAtual = 4;
     let pontuacao = 0;
@@ -201,27 +202,36 @@ function criarColheita() {
     }
     
     // 5. Finaliza o jogo
-    function finalizarJogo() {
-        jogoAtivo = false;
-        
-        // Remove todos os listeners restantes
-        colheitaArea.querySelectorAll('.fruta').forEach(fruta => {
-            fruta.removeEventListener('click', handleColheitaClick);
-            fruta.style.pointerEvents = 'none';
-        });
-        
-        // Mostra a mensagem final
-        let mensagem = `FIM DE JOGO! Você fez ${pontuacao} pontos.`;
-        if (corretosColhidos === 10) {
-            mensagem += " Parabéns! Você colheu todos os múltiplos!";
-        } else {
-            mensagem += ` Você colheu ${corretosColhidos} múltiplos de 10.`;
-        }
-        
-        feedbackEl.textContent = mensagem;
-        feedbackEl.className = 'feedback success';
-        resetBtn.style.display = 'block';
+function finalizarJogo() {
+    jogoAtivo = false;
+
+    colheitaArea.querySelectorAll('.fruta').forEach(fruta => {
+        fruta.removeEventListener('click', handleColheitaClick);
+        fruta.style.pointerEvents = 'none';
+    });
+
+    let mensagem = `FIM DE JOGO! Você fez ${pontuacao} pontos.`;
+    if (corretosColhidos === 10) {
+        mensagem += " Parabéns! Você colheu todos os múltiplos!";
+        somComemoracao.play(); // 🔊 toca som de comemoração
+
+        // Mostra o pop-up
+        document.getElementById("popup-parabens").style.display = "flex";
+    } else {
+        mensagem += ` Você colheu ${corretosColhidos} múltiplos de 10.`;
     }
+
+    feedbackEl.textContent = mensagem;
+    feedbackEl.className = 'feedback success';
+    resetBtn.style.display = 'block';
+}
+
+// Fecha o pop-up quando clicar no botão
+document.getElementById("popup-close").addEventListener("click", () => {
+    document.getElementById("popup-parabens").style.display = "none";
+});
+
+
 
     // 6. Atualiza o placar na tela
     function atualizarPlacar() {
