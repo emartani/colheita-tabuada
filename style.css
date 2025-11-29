@@ -48,6 +48,13 @@ h1 {
   margin-bottom: 15px;
 }
 
+.config {
+  display: flex;
+  flex-direction: column;   /* organiza os elementos em coluna */
+  align-items: center;      /* centraliza horizontalmente */
+  margin-top: 20px;         /* espaço extra em relação ao topo */
+}
+
 .config, .placar, .fazenda {
   width: 100%;
 }
@@ -66,6 +73,7 @@ h1 {
 }
 
 #iniciar-btn, #reset-btn {
+  margin-top: 15px; 
   padding: 10px 15px;
   font-size: 18px;
   cursor: pointer;
