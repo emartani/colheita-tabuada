@@ -192,7 +192,11 @@ function criarColheita() {
         multiploInput.disabled = true;
         resetBtn.style.display = 'none';
         
-        perguntaEl.textContent = `Colha apenas os múltiplos de ${multiploAtual}. Clique nas frutas corretas!`;
+        perguntaEl.textContent = `Verifique em sua tabuada e colha apenas os múltiplos de ${multiploAtual}. Clique nas frutas corretas!`;
+        // 🔊 Faz o navegador falar a frase
+        const utterance = new SpeechSynthesisUtterance(perguntaEl.textContent);
+        utterance.lang = "pt-BR"; // define português do Brasil
+        speechSynthesis.speak(utterance);
         feedbackEl.textContent = '';
         
         atualizarPlacar();

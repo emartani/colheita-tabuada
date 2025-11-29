@@ -1,177 +1,206 @@
+/* Fundo com céu e grama */
 body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #e6ffe6; /* Fundo de grama */
-    margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(to top, #99ff99 40%, #87ceeb 100%);
+  position: relative;
+}
+
+/* Sol e nuvens decorativas */
+.decoracao .sol {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 60px;
+}
+.decoracao .nuvem {
+  position: absolute;
+  font-size: 40px;
+}
+.decoracao .nuvem1 {
+  top: 50px;
+  left: 20px;
+}
+.decoracao .nuvem2 {
+  top: 80px;
+  left: 100px;
 }
 
 .game-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 700px;
-    
-    /* REMOVER: text-align: center; (substituído por align-items) */
-    
-    /* --- AJUSTE PARA RESPONSIVIDADE (Centralização Flexbox) --- */
-    display: flex;             /* Habilita o Flexbox */
-    flex-direction: column;    /* Alinha os filhos (Blocos) verticalmente */
-    align-items: center;       /* Centraliza os filhos (Blocos) horizontalmente */
-}
-
-.config, .placar, .fazenda {
-    width: 100%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
-    color: #008000;
+  color: #ff6600;
+  text-shadow: 2px 2px #ffd700;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-/* --- Configuração e Placar --- */
+.config, .placar, .fazenda {
+  width: 100%;
+}
+
 .config, .placar {
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 #multiplo {
-    padding: 8px;
-    font-size: 16px;
-    width: 60px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  padding: 8px;
+  font-size: 16px;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 #iniciar-btn, #reset-btn {
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50; 
-    color: white;
-    transition: background-color 0.3s;
-    margin-left: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s;
+  margin-left: 10px;
 }
 
 #iniciar-btn:hover, #reset-btn:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 .placar span {
-    font-weight: bold;
-    color: #333;
+  font-weight: bold;
+  color: #333;
 }
 
-/* --- Área da Fazenda (Jogo) --- */
+/* Área da fazenda */
 .fazenda {
-    position: relative;
-    height: 300px; /* Altura do campo */
-    border: 2px dashed #008000;
-    border-radius: 10px;
-    background-color: #f0fff0;
-    margin: 20px 0;
+  position: relative;
+  height: 300px;
+  border: 4px solid #008000;
+  border-radius: 15px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f0fff0,
+    #f0fff0 10px,
+    #e6ffe6 10px,
+    #e6ffe6 20px
+  );
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.fazenda::before {
+  content: "🌻 🌼 🌸 🌷";
+  font-size: 28px;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
 }
 
 #fazendeiro {
-    font-size: 40px;
-    position: absolute;
-    bottom: 5px; /* Posição inicial no chão */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    user-select: none;
+  font-size: 40px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  user-select: none;
 }
 
 #colheita-area {
-    height: 100%;
-     /*padding-bottom: 50px; Espaço para o fazendeiro */
-    position: relative; /* ESSENCIAL para o posicionamento absoluto das frutas */
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
 }
 
+/* Frutas ovaladas e coloridas */
 .fruta {
-    font-size: 30px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    position: absolute; 
-    transition: transform 0.2s ease-out, opacity 0.3s, top 0.5s, left 0.5s;  /* Adiciona top/left na transição */
+  font-size: 22px;
+  padding: 6px 10px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  border-radius: 20px;
+  max-width: 80px;
+  white-space: nowrap;
+  background-color: #ffeb99;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-out, opacity 0.3s;
 }
+
+.fruta:nth-child(3n) { background-color: #ff9999; }
+.fruta:nth-child(3n+1) { background-color: #99ccff; }
+.fruta:nth-child(3n+2) { background-color: #99ff99; }
 
 .fruta:hover {
-    transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .fruta.correta {
-    border: 3px solid gold;
-    border-radius: 5px;
+  border: 3px solid gold;
 }
 
 .fruta.errada {
-    background-color: #ffdddd;
-    border: 3px solid red;
-    border-radius: 5px;
+  background-color: #ffdddd;
+  border: 3px solid red;
 }
 
 .colhida {
-    opacity: 0;
-    transform: translateY(-50px) scale(0.5) !important;
+  opacity: 0;
+  transform: translateY(-50px) scale(0.5) !important;
 }
 
-/* --- Feedback --- */
+/* Feedback */
 .feedback {
-    min-height: 25px;
-    font-weight: bold;
-    margin-top: 10px;
+  min-height: 25px;
+  font-weight: bold;
+  margin-top: 10px;
 }
+.feedback.success { color: green; }
+.feedback.error { color: red; }
 
-.feedback.success {
-    color: green;
-}
-
-.feedback.error {
-    color: red;
-}
-
-/* style.css (Adicione/Substitua no final do arquivo) */
-
+/* Responsivo para celular */
 @media (max-width: 600px) {
-    
-    /* 1. AUMENTA A ALTURA DO CAMPO PARA COMPENSAR A LARGURA */
-    .fazenda {
-        height: 400px; /* Aumentado para 400px (o padrão é 300px) */
-        margin: 15px 0;
-    }
+  .fazenda {
+    height: 350px;
+  }
 
-    /* 2. Reduz o tamanho das frutas/números */
-    .fruta {
-        font-size: 18px;
-        padding: 4px;
-    }
+  .fruta {
+    font-size: 16px;
+    padding: 4px 8px;
+    max-width: 60px;
+  }
 
-    /* 3. Garante que os números dentro da fruta também diminuam */
-    .fruta span {
-        font-size: 12px;
-    }
-    
-    /* 4. Reduz o tamanho do fazendeiro */
-    #fazendeiro {
-        font-size: 30px;
-    }
+  #fazendeiro {
+    font-size: 28px;
+  }
 
-    /* 5. Ajusta o tamanho da fonte geral do cabeçalho */
-    h1 {
-        font-size: 24px;
-    }
-    
-    /* 6. Ajusta o tamanho dos botões */
-    #iniciar-btn, #reset-btn {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
+  h1 {
+    font-size: 22px;
+  }
+
+  #iniciar-btn, #reset-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }

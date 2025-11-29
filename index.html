@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colheita Múltipla</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colheita de Frutas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -13,39 +13,43 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-XLPTB4NB1V');
 </script>
 
 <body>
-    <div class="game-container">
-        <h1>Jogo da Colheita Múltipla</h1>
-        
-        <div class="instrucoes">
-            <p id="pergunta">Qual tabuada você quer treinar?</p>
-            <div class="config">
-                <label for="multiplo">Múltiplo (Ex: 3, 5, 7):</label>
-                <input type="number" id="multiplo" value="5" min="2" max="10">
-                <button id="iniciar-btn">Iniciar Colheita</button>
-            </div>
-        </div>
+  <!-- Sol e nuvens decorativos -->
+  <div class="decoracao">
+    <div class="sol">☀️</div>
+    <div class="nuvem nuvem1">☁️</div>
+    <div class="nuvem nuvem2">☁️</div>
+  </div>
 
-        <div class="placar">
-            <p>Pontuação: <span id="pontuacao">0</span></p>
-            <p>Múltiplos Corretos: <span id="corretos-count">0</span> de 10</p>
-        </div>
-
-        <div class="fazenda">
-            <div id="fazendeiro">👨‍🌾</div>
-            <div id="colheita-area">
-                </div>
-        </div>
-
-        <p id="feedback" class="feedback"></p>
-        <button id="reset-btn" style="display: none;">Novo Jogo</button>
-
-    </div>
+  <div class="game-container">
+    <h1>🌈 Jogo da Colheita de Frutas 🌻</h1>
     
-    <script src="script.js"></script>
+    <div class="instrucoes">
+      <p id="pergunta">Qual tabuada você quer treinar?</p>
+      <div class="config">
+        <label for="multiplo">Escolha (Ex: 2, 3, 7):</label>
+        <input type="number" id="multiplo" value="5" min="2" max="10">
+        <button id="iniciar-btn">Iniciar Colheita</button>
+      </div>
+    </div>
+
+    <div class="placar">
+      <p>Pontuação: <span id="pontuacao">0</span></p>
+      <p>Múltiplos Corretos: <span id="corretos-count">0</span> de 10</p>
+    </div>
+
+    <div class="fazenda">
+      <div id="fazendeiro">👨‍🌾</div>
+      <div id="colheita-area"></div>
+    </div>
+
+    <p id="feedback" class="feedback"></p>
+    <button id="reset-btn" style="display: none;">Novo Jogo</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
