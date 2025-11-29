@@ -2,37 +2,36 @@
 body {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   margin: 0;
   background: linear-gradient(to top, #99ff99 40%, #87ceeb 100%);
-  position: relative;
 }
 
-/* Sol e nuvens decorativas */
-.decoracao .sol {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 60px;
+/* Área de decoração */
+.decoracao {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px; /* espaço entre decoração e título */
 }
-.decoracao .nuvem {
-  position: absolute;
+
+.sol {
+  font-size: 50px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.nuvem {
   font-size: 40px;
-}
-.decoracao .nuvem1 {
-  top: 50px;
-  left: 20px;
-}
-.decoracao .nuvem2 {
-  top: 80px;
-  left: 100px;
+  display: inline-block;
+  margin: 0 10px;
 }
 
 .game-container {
   background-color: #fff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 90%;
@@ -46,7 +45,7 @@ h1 {
   color: #ff6600;
   text-shadow: 2px 2px #ffd700;
   font-size: 32px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .config, .placar, .fazenda {
@@ -177,26 +176,27 @@ h1 {
 
 /* Responsivo para celular */
 @media (max-width: 600px) {
-  body {
-    font-size: 18px;
-  }
-
   .fazenda {
     height: 350px;
   }
 
   .fruta {
-    font-size: 20px;
-    padding: 6px 10px;
-    max-width: 65px;
+    font-size: 16px;
+    padding: 4px 8px;
+    max-width: 60px;
   }
 
   #fazendeiro {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 26px;
+  }
+
+  #iniciar-btn, #reset-btn {
+    padding: 8px 12px;
+    font-size: 14px;
   }
 
   #iniciar-btn, #reset-btn {
@@ -206,5 +206,13 @@ h1 {
 
   #multiplo {
     font-size: 18px;
+  }
+
+  .sol {
+    font-size: 36px;
+  }
+
+  .nuvem {
+    font-size: 28px;
   }
 }
