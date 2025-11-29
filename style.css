@@ -191,7 +191,7 @@ h1 {
   }
 
   h1 {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   #iniciar-btn, #reset-btn {
@@ -214,5 +214,12 @@ h1 {
 
   .nuvem {
     font-size: 28px;
+  }
+
+  #pergunta {
+  font-size: 20px;   /* aumentado para dar mais destaque */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
   }
 }
